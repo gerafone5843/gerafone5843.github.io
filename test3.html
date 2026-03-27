@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Are You Easy To Scam?</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="test1.html">Test 1</a>
+<a href="test2.html">Test 2</a>
+<a href="test3.html">Test 3</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+</nav>
+
+<div class="container">
+
+<h2>Are You Easy To Scam?</h2>
+
+<p>
+This test evaluates how likely you are to fall for common online scams and social engineering attacks.
+Answer honestly to get the most accurate result.
+</p>
+
+<div id="quiz">
+<p id="question"></p>
+<button class="answer" onclick="answer(1)">Yes</button>
+<button class="answer" onclick="answer(0)">No</button>
+</div>
+
+<div id="result" style="display:none;"></div>
+
+</div>
+
+<script>
+
+let q = [
+"Do you trust messages from unknown senders?",
+"Would you click a link promising free money?",
+"Do you verify websites before entering passwords?",
+"Do you respond to urgent requests without thinking?",
+"Have you ever shared personal info online?"
+];
+
+let i = 0, score = 0;
+
+function showQ(){
+document.getElementById("question").innerText = q[i];
+}
+
+function answer(v){
+if(v===1) score++;
+i++;
+if(i<q.length) showQ();
+else showR();
+}
+
+function showR(){
+document.getElementById("quiz").style.display="none";
+
+let r = "";
+
+if(score <= 1){
+r = "You are very cautious 😎";
+}
+else if(score <= 3){
+r = "You are somewhat vulnerable ⚠️";
+}
+else{
+r = "High scam risk 😬";
+}
+
+document.getElementById("result").style.display="block";
+document.getElementById("result").innerText = r;
+}
+
+showQ();
+
+</script>
+
+</body>
+</html>
